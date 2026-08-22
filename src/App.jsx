@@ -1,17 +1,20 @@
-import { useEffect } from 'react';
-import { getProducts } from './services/productsService';
+import { Route, Routes } from 'react-router-dom';
+
+import { Home } from './pages/Home/Home';
+import { Category } from './pages/Category/Category';
+import { ProductDetail } from './pages/ProductDetail/ProductDetail';
+import { Cart } from './pages/Cart/Cart';
+import { Checkout } from './pages/Checkout/Checkout';
 
 function App() {
-  useEffect(() => {
-    getProducts().then((products) => {
-      console.log(products);
-    });
-  }, []);
-
   return (
-    <>
-      <h1 className='text-red-400'>Anime Store</h1>
-    </>
+    <Routes>
+      <Route path='/' element={<Home />} />
+      <Route path='/category/:categoryId' element={<Category />} />
+      <Route path='/product/:productId' element={<ProductDetail />} />
+      <Route path='/cart' element={<Cart />} />
+      <Route path='/checkout' element={<Checkout />} />
+    </Routes>
   );
 }
 
