@@ -3,9 +3,10 @@ import { NavBar } from '../NavBar/NavBar';
 
 export function MainLayout() {
   return (
-    <div>
-      <NavBar/>
-      <main>
+    <div className='min-h-screen bg-white text-gray-900'>
+      <NavBar />
+
+      <main className='mx-auto w-full max-w-7xl px-4 py-8 sm:px-6 lg:px-8'>
         <Outlet />
       </main>
     </div>
