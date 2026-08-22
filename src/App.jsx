@@ -10,7 +10,7 @@ function App() {
 
   return (
     <>
-      <h1>Anime Store</h1>
+      <h1 className='text-red-400'>Anime Store</h1>
     </>
   );
 }
