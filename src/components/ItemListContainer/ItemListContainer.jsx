@@ -1,13 +1,12 @@
 import { ErrorMessage } from '../ErrorMessage/ErrorMessage';
 import { ItemList } from '../ItemList/ItemList';
 import { Loader } from '../Loader/Loader';
+import { TitleSection } from '../TitleSection/TitleSection';
 
 export function ItemListContainer({ title, products, isLoading, hasError }) {
   return (
-    <section className='mx-auto w-full max-w-7xl px-4 py-8'>
-      <h1 className='mb-6 text-2xl font-biorhyme font-semibold uppercase'>
-        {title}
-      </h1>
+    <section className='mx-auto w-full'>
+      <TitleSection title={title} />
       {isLoading ? (
         <div className='flex justify-center'>
           <Loader />
