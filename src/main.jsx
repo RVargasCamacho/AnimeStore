@@ -8,7 +8,7 @@ import { Toaster } from 'sonner';
 createRoot(document.getElementById('root')).render(
   <BrowserRouter>
     <CartProvider>
-      <Toaster position='top-right' />
+      <Toaster position='bottom-right' />
       <App />
     </CartProvider>
   </BrowserRouter>,

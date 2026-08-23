@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import { useCart } from '../../context/CartContext';
 
@@ -7,8 +7,13 @@ import { ItemCount } from '../ItemCount/ItemCount';
 import { toast } from 'sonner';
 
 export function ProductDetailContainer({ product }) {
+  const { addItem, cart } = useCart();
   const [added, setAdded] = useState(false);
-  const { addItem } = useCart();
+
+  useEffect(() => {
+    const productInCart = cart.find((item) => item.id === product.id);
+    setAdded(productInCart !== undefined);
+  }, [cart]);
 
   const handleAddToCart = (quantity) => {
     addItem(product, quantity);

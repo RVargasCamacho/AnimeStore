@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { Menu, ShoppingCart, X } from 'lucide-react';
 import { DesktopNav } from './DesktopNav';
 import { MobileNav } from './MobileNav';
-
+import { CartWidget } from '../CartWidget/CartWidget';
 
 export function NavBar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -30,13 +30,7 @@ export function NavBar() {
         <DesktopNav />
 
         <div className='flex items-center gap-4'>
-          <Link
-            to='/cart'
-            className='text-gray-600 transition hover:text-gray-900'
-            aria-label='Carrito de compras'
-          >
-            <ShoppingCart size={22} />
-          </Link>
+          <CartWidget />
 
           <button
             type='button'

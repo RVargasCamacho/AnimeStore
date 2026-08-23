@@ -1,5 +1,5 @@
 import React from 'react'
-import ItemCart from './ItemCart';
+import { ItemCart } from './ItemCart';
 
 export function ItemCartList({cart}) {
   return (
