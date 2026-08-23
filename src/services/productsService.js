@@ -1,10 +1,10 @@
-import { collection, getDocs } from "firebase/firestore";
-import { db } from "../firebase/config";
+import { collection, getDocs } from 'firebase/firestore';
+import { db } from '../firebase/config';
 
 // Obtener todos los productos de la base de datos de Firebase
 export const getProducts = async () => {
   // accedemos a la colección de productos
-  const productCollection = collection(db, "productos");
+  const productCollection = collection(db, 'productos');
   // obtenemos todos los documentos de la colección
   const querySnapshot = await getDocs(productCollection);
 
@@ -13,4 +13,20 @@ export const getProducts = async () => {
     id: doc.id,
     ...doc.data(),
   }));
-}
+};
+
+export const getProductsByCategory = async (category) => {
+  const productCollection = collection(db, 'productos');
+
+  const categoryQuery = query(
+    productCollection,
+    where('category', '==', category),
+  );
+
+  const querySnapshot = await getDocs(categoryQuery);
+
+  return querySnapshot.docs.map((doc) => ({
+    id: doc.id,
+    ...doc.data(),
+  }));
+};
