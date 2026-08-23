@@ -7,10 +7,11 @@ import { Link } from 'react-router-dom';
 
 export function CartWidget() {
   const { cart } = useCart();
-  const [quantityItems, setQuantityItems] = useState(cart.length);
+  const [quantityItems, setQuantityItems] = useState(0);
 
-  useEffect(() => {    
-    setQuantityItems(cart.length);
+  useEffect(() => {
+    const total = cart.reduce((acc, item) => acc + item.quantity, 0);
+    setQuantityItems(total);
   }, [cart]);
 
   return (
