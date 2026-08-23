@@ -31,8 +31,8 @@ export function Home() {
     <ItemListContainer
       title='Productos'
       products={products}
-      loading={loading}
-      error={error}
+      isLoading={loading}
+      hasError={error}
     />
   );
 }

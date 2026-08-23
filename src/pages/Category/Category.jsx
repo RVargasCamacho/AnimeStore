@@ -32,8 +32,8 @@ export function Category() {
     <ItemListContainer
       title={categoryId}
       products={products}
-      loading={loading}
-      error={error}
+      isLoading={loading}
+      hasError={error}
     />
   );
 }
