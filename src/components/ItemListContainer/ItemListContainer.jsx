@@ -4,7 +4,9 @@ import { Loader } from '../Loader/Loader';
 export function ItemListContainer({ title, products, loading, error }) {
   return (
     <section className='mx-auto w-full max-w-7xl px-4 py-8'>
-      <h1 className='mb-6 text-2xl font-biorhyme font-semibold'>{title}</h1>
+      <h1 className='mb-6 text-2xl font-biorhyme font-semibold uppercase'>
+        {title}
+      </h1>
       {loading ? (
         <div className='flex justify-center'>
           <Loader />
