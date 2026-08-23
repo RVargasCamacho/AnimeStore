@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom';
 import { getProductById } from '../../services/productsService';
 import { Loader } from '../../components/Loader/Loader';
 import { NotFound } from '../../components/NotFound/NotFound';
+import { ProductDetailContainer } from '../../components/ProductDetail/ProductDetailContainer';
 
 export function ProductDetail() {
   const { productId } = useParams();
@@ -51,5 +52,5 @@ export function ProductDetail() {
     return <NotFound message='Producto no encontrado' />;
   }
 
-  return <div>ProductDetail : {JSON.stringify(product, null, 2)}</div>;
+  return <ProductDetailContainer product={product} />;
 }
