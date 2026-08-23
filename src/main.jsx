@@ -3,10 +3,12 @@ import './index.css';
 import App from './App.jsx';
 import { BrowserRouter } from 'react-router-dom';
 import { CartProvider } from './context/CartContext.jsx';
+import { Toaster } from 'sonner';
 
 createRoot(document.getElementById('root')).render(
   <BrowserRouter>
     <CartProvider>
+      <Toaster position='top-center' />
       <App />
     </CartProvider>
   </BrowserRouter>,

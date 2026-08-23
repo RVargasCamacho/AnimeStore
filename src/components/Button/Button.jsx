@@ -4,9 +4,12 @@ export function Button({ children, size, className = '', ...props }) {
   return (
     <button
       className={clsx(
-        'rounded-lg transition-colors bg-indigo-500 text-white',
-        sizeClasses(size),
         className,
+        'rounded-lg transition-all bg-indigo-500 text-white active:bg-indigo-800 active:scale-98 duration-100',
+        sizeClasses(size),
+        props.disabled
+          ? 'opacity-50 cursor-not-allowed'
+          : 'cursor-pointer hover:bg-indigo-600',
       )}
       {...props}
     >
