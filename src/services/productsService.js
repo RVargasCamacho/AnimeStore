@@ -1,4 +1,11 @@
-import { collection, getDocs, query, where } from 'firebase/firestore';
+import {
+  collection,
+  doc,
+  getDoc,
+  getDocs,
+  query,
+  where,
+} from 'firebase/firestore';
 import { db } from '../firebase/config';
 
 // Obtener todos los productos de la base de datos de Firebase
@@ -29,4 +36,19 @@ export const getProductsByCategory = async (category) => {
     id: doc.id,
     ...doc.data(),
   }));
+};
+
+export const getProductById = async (productId) => {
+  const productRef = doc(db, 'productos', productId);
+
+  const productSnapshot = await getDoc(productRef);
+
+  if (!productSnapshot.exists()) {
+    return null;
+  }
+
+  return {
+    id: productSnapshot.id,
+    ...productSnapshot.data(),
+  };
 };
