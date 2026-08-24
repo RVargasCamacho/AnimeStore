@@ -7,7 +7,6 @@ import { CheckoutForm } from './CheckoutForm';
 
 export function CheckoutContainer() {
   const { shippingValue, subtotal, total, cart } = useCart();
-  const [orderId, setOrderId] = useState('');
   const [formData, setFormData] = useState({
     name: '',
     phone: '',
@@ -65,11 +64,7 @@ export function CheckoutContainer() {
       </section>
 
       <section>
-        <CartCheckout
-          validateForm={validateForm}
-          checkoutData={checkoutData}
-          setOrderId={setOrderId}
-        />
+        <CartCheckout validateForm={validateForm} checkoutData={checkoutData} />
       </section>
     </div>
   );

@@ -9,7 +9,7 @@ import { ItemCartList } from '../Cart/ItemCartList';
 import { CheckoutBill } from './CheckoutBill';
 import { useNavigate } from 'react-router-dom';
 
-export function CartCheckout({ validateForm, checkoutData, setOrderId }) {
+export function CartCheckout({ validateForm, checkoutData }) {
   const { cart, cleanCart } = useCart();
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
@@ -22,15 +22,13 @@ export function CartCheckout({ validateForm, checkoutData, setOrderId }) {
     setIsLoading(true);
     try {
       const order = await createOrder(checkoutData());
-      console.log(order);
-      setOrderId(order.id);
       cleanCart();
       navigate(`/order-confirmation/${order.id}`, {
         replace: true,
       });
     } catch (error) {
-      setOrderId('');
-      toast.error('Ocurrió un error al enviar el pedido');
+      const message = error.message || 'Ocurrió un error al enviar el pedido';
+      toast.error(message);
     } finally {
       setIsLoading(false);
     }

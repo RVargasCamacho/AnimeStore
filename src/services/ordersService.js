@@ -1,9 +1,16 @@
 import { addDoc, collection, doc, getDoc, Timestamp } from 'firebase/firestore';
 import { db } from '../firebase/config';
+import { checkProductsStock, updateProductStock } from './productsService';
 
 export const createOrder = async (orderData) => {
+  await checkProductsStock(orderData.items);
+
   const ordersCollection = collection(db, 'orders');
   const date = Timestamp.now();
+
+  await Promise.all(
+    orderData.items.map((item) => updateProductStock(item.id, item.quantity)),
+  );
 
   const orderDocument = await addDoc(ordersCollection, {
     ...orderData,

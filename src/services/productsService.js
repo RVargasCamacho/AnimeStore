@@ -4,6 +4,7 @@ import {
   getDoc,
   getDocs,
   query,
+  updateDoc,
   where,
 } from 'firebase/firestore';
 import { db } from '../firebase/config';
@@ -52,3 +53,46 @@ export const getProductById = async (productId) => {
     ...productSnapshot.data(),
   };
 };
+
+export const checkProductsStock = async (items) => {
+  await Promise.all(
+    items.map(async (item) => {
+      const productRef = doc(db, 'productos', item.id);
+      const productSnapshot = await getDoc(productRef);
+
+      if (!productSnapshot.exists()) {
+        throw new Error(`Producto ${item.title} no encontrado`);
+      }
+
+      const product = productSnapshot.data();
+
+      if (product.stock < item.quantity) {
+        throw new Error(`Stock insuficiente para el producto: ${item.title}`);
+      }
+    }),
+  );
+};
+
+export const updateProductStock = async (productId, quantity) => {
+  const productRef = doc(db, 'productos', productId);
+
+  const productSnapshot = await getDoc(productRef);
+
+  if (!productSnapshot.exists()) {
+    throw new Error('Producto no encontrado');
+  }
+
+  const product = productSnapshot.data();
+
+  const newStock = product.stock - quantity;
+
+  if (newStock < 0) {
+    throw new Error('Stock insuficiente');
+  }
+
+  await updateDoc(productRef, {
+    stock: newStock,
+  });
+};
+
+
