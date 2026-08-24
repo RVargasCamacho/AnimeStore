@@ -1,11 +1,13 @@
 import { useState } from 'react';
+
+import { useCart } from '../../context/CartContext';
+
 import { CartCheckout } from './CartCheckout';
 import { CheckoutForm } from './CheckoutForm';
-import { useCart } from '../../context/CartContext';
-import { toast } from 'sonner';
 
 export function CheckoutContainer() {
   const { shippingValue, subtotal, total, cart } = useCart();
+  const [orderId, setOrderId] = useState('');
   const [formData, setFormData] = useState({
     name: '',
     phone: '',
@@ -30,11 +32,7 @@ export function CheckoutContainer() {
     return true;
   };
 
-  const handleSendForm = () => {
-    if (!validateForm()) {
-      toast.error('Por favor, rellena todos los campos del formulario.');
-      return;
-    }
+  const checkoutData = () => {
     const cartCheckout = cart.map((item) => {
       return {
         id: item.id,
@@ -43,7 +41,8 @@ export function CheckoutContainer() {
         quantity: item.quantity,
       };
     });
-    const checkoutData = {
+
+    return {
       buyer: {
         name: formData.name,
         phone: formData.phone,
@@ -55,10 +54,7 @@ export function CheckoutContainer() {
       shipping: shippingValue,
       subtotal: subtotal,
       total: total,
-      date: new Date().toISOString(),
     };
-
-    console.log(checkoutData);
   };
 
   return (
@@ -68,7 +64,11 @@ export function CheckoutContainer() {
       </section>
 
       <section>
-        <CartCheckout onSendForm={handleSendForm} />
+        <CartCheckout
+          validateForm={validateForm}
+          checkoutData={checkoutData}
+          setOrderId={setOrderId}
+        />
       </section>
     </div>
   );

@@ -1,11 +1,18 @@
 import clsx from 'clsx';
+import { LoaderButton } from '../LoaderButton/LoaderButton';
 
-export function Button({ children, size, className = '', ...props }) {
+export function Button({
+  children,
+  size,
+  className = '',
+  isLoading = false,
+  ...props
+}) {
   return (
     <button
       className={clsx(
         className,
-        'rounded-lg transition-all bg-indigo-500 text-white active:bg-indigo-800 active:scale-98 duration-100',
+        'w-full flex justify-center items-center gap-2 rounded-lg transition-all bg-indigo-500 text-white active:bg-indigo-800 active:scale-98 duration-100',
         sizeClasses(size),
         props.disabled
           ? 'opacity-50 cursor-not-allowed'
@@ -13,6 +20,7 @@ export function Button({ children, size, className = '', ...props }) {
       )}
       {...props}
     >
+      {isLoading && <LoaderButton />}
       {children}
     </button>
   );

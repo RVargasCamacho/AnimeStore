@@ -39,15 +39,23 @@ export function CartProvider({ children }) {
     });
   };
 
+  const cleanCart = () => {
+    setCart([]);
+    setShippingValue(0);
+    setSubtotal(0);
+    setTotal(0);
+  };
+
   return (
     <CartContext.Provider
       value={{
         cart,
-        addItem,
-        setShippingValue,
         total,
         subtotal,
         shippingValue,
+        addItem,
+        setShippingValue,
+        cleanCart,
       }}
     >
       {children}
