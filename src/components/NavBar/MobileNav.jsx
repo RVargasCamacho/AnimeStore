@@ -3,8 +3,9 @@ import { X } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 import styles from './MobileNav.module.css';
+import { NavLinkApp } from '../NavLinkApp/NavLinkApp';
 
-export function MobileNav({isOpen, onClose }) {
+export function MobileNav({ isOpen, onClose }) {
   return (
     <div
       className={clsx(
@@ -25,38 +26,38 @@ export function MobileNav({isOpen, onClose }) {
           </button>
         </header>
 
-        <div className='mx-auto flex max-w-7xl flex-col px-4 py-3'>
-          <Link
+        <div className='mx-auto flex max-w-7xl flex-col gap-4 px-4 py-3'>
+          <NavLinkApp
             to='/'
             onClick={onClose}
-            className='border-b border-gray-100 py-3 text-gray-700 transition hover:text-gray-900'
+            className='border-b border-gray-200 py-2 px-3'
           >
             Inicio
-          </Link>
+          </NavLinkApp>
 
-          <Link
+          <NavLinkApp
             to='/category/figuras'
             onClick={onClose}
-            className='border-b border-gray-100 py-3 text-gray-700 transition hover:text-gray-900'
+            className='border-b border-gray-200 py-2 px-3'
           >
             Figuras
-          </Link>
+          </NavLinkApp>
 
-          <Link
+          <NavLinkApp
             to='/category/mangas'
             onClick={onClose}
-            className='border-b border-gray-100 py-3 text-gray-700 transition hover:text-gray-900'
+            className='border-b border-gray-200 py-2 px-3'
           >
             Mangas
-          </Link>
+          </NavLinkApp>
 
-          <Link
+          <NavLinkApp
             to='/category/accesorios'
             onClick={onClose}
-            className='py-3 text-gray-700 transition hover:text-gray-900'
+            className='border-b border-gray-200 py-2 px-3'
           >
             Accesorios
-          </Link>
+          </NavLinkApp>
         </div>
       </div>
     </div>

@@ -1,32 +1,16 @@
 import { Link } from 'react-router-dom';
+import { NavLinkApp } from '../NavLinkApp/NavLinkApp';
 
 export function DesktopNav() {
   return (
     <div className='hidden items-center gap-6 md:flex'>
-      <Link to='/' className='text-gray-600 transition hover:text-gray-900'>
-        Inicio
-      </Link>
+      <NavLinkApp to='/'>Inicio</NavLinkApp>
 
-      <Link
-        to='/category/figuras'
-        className='text-gray-600 transition hover:text-gray-900'
-      >
-        Figuras
-      </Link>
+      <NavLinkApp to='/category/figuras'>Figuras</NavLinkApp>
 
-      <Link
-        to='/category/mangas'
-        className='text-gray-600 transition hover:text-gray-900'
-      >
-        Mangas
-      </Link>
+      <NavLinkApp to='/category/mangas'>Mangas</NavLinkApp>
 
-      <Link
-        to='/category/accesorios'
-        className='text-gray-600 transition hover:text-gray-900'
-      >
-        Accesorios
-      </Link>
+      <NavLinkApp to='/category/accesorios'>Accesorios</NavLinkApp>
     </div>
   );
 }

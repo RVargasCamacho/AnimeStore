@@ -1,3 +1,4 @@
+import { EmptyState } from '../Emptystate/EmptyState';
 import { ErrorMessage } from '../ErrorMessage/ErrorMessage';
 import { ItemList } from '../ItemList/ItemList';
 import { Loader } from '../Loader/Loader';
@@ -6,7 +7,6 @@ import { TitleSection } from '../TitleSection/TitleSection';
 export function ItemListContainer({ title, products, isLoading, hasError }) {
   return (
     <section className='mx-auto w-full'>
-      <TitleSection title={title} />
       {isLoading ? (
         <div className='flex justify-center'>
           <Loader />
@@ -17,10 +17,17 @@ export function ItemListContainer({ title, products, isLoading, hasError }) {
         </div>
       ) : !products || products.length === 0 ? (
         <div className='flex justify-center'>
-          <p>No hay productos disponibles</p>
+          <EmptyState title={title}>
+            <div className='flex flex-col gap-4 justify-center items-center'>
+              <p>No hay productos disponibles</p>
+            </div>
+          </EmptyState>
         </div>
       ) : (
-        <ItemList products={products} />
+        <>
+          <TitleSection title={title} />
+          <ItemList products={products} />
+        </>
       )}
     </section>
   );
