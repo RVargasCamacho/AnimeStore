@@ -9,5 +9,5 @@ export function Checkout() {
     return <ErrorMessage message='No hay productos en el carrito' />;
   }
 
-  return <CheckoutContainer cart={cart} />;
+  return <CheckoutContainer />;
 }
