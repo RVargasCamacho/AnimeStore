@@ -6,10 +6,10 @@ export function OrderConfirmationItem({ item, isLastItem }) {
     <article
       className={clsx(
         'w-full flex gap-4',
-        isLastItem ? "" : 'border-b border-gray-200 p-4',
+        isLastItem ? '' : 'border-b border-gray-200 p-4',
       )}
     >
-      {isLastItem && "ultimo"}
+      {isLastItem && 'ultimo'}
       <section className='w-40 h-40 md:w-44 md:h-44 bg-gray-300 rounded-lg overflow-hidden'>
         <img
           src={item.image}
@@ -44,12 +44,10 @@ export function OrderConfirmationItem({ item, isLastItem }) {
 
         <article className='flex lg:flex-col gap-2 justify-between'>
           <p>Subtotal:</p>
-            <p className='font-regular lg:font-semibold text-lg'>
-              ${item.price}
-            </p>
+          <p className='font-regular lg:font-semibold text-lg'>
+            ${item.price * item.quantity}
+          </p>
         </article>
-
-  
       </section>
     </article>
   );
