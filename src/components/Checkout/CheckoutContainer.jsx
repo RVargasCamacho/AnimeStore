@@ -39,6 +39,7 @@ export function CheckoutContainer() {
         title: item.title,
         price: item.price,
         quantity: item.quantity,
+        image: item.image,
       };
     });
 

@@ -7,6 +7,7 @@ import { Cart } from './pages/Cart/Cart';
 import { Checkout } from './pages/Checkout/Checkout';
 import { MainLayout } from './components/layout/MainLayout';
 import { NotFound } from './components/NotFound/NotFound';
+import { OrderConfirmation } from './pages/OrderConfirmation/OrderConfirmation';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route path='/product/:productId' element={<ProductDetail />} />
         <Route path='/cart' element={<Cart />} />
         <Route path='/checkout' element={<Checkout />} />
+        <Route path='/order-confirmation/:id' element={<OrderConfirmation />} />
 
         <Route path='*' element={<NotFound message='Página no encontrada' />} />
       </Route>

@@ -7,9 +7,11 @@ import { toast } from 'sonner';
 import { Button } from '../Button/Button';
 import { ItemCartList } from '../Cart/ItemCartList';
 import { CheckoutBill } from './CheckoutBill';
+import { useNavigate } from 'react-router-dom';
 
 export function CartCheckout({ validateForm, checkoutData, setOrderId }) {
-  const { cart } = useCart();
+  const { cart, cleanCart } = useCart();
+  const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
 
   const handleSendForm = async () => {
@@ -22,7 +24,10 @@ export function CartCheckout({ validateForm, checkoutData, setOrderId }) {
       const order = await createOrder(checkoutData());
       console.log(order);
       setOrderId(order.id);
-      toast.success(`Orden enviada con éxito`);
+      cleanCart();
+      navigate(`/order-confirmation/${order.id}`, {
+        replace: true,
+      });
     } catch (error) {
       setOrderId('');
       toast.error('Ocurrió un error al enviar el pedido');
