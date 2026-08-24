@@ -4,10 +4,22 @@ const CartContext = createContext();
 
 export function CartProvider({ children }) {
   const [cart, setCart] = useState([]);
+  const [total, setTotal] = useState(0);
+  const [subtotal, setSubtotal] = useState(0);
+  const [shippingValue, setShippingValue] = useState(0);
 
   useEffect(() => {
-    console.log({ cart });
+    const subtotal = cart.reduce(
+      (acc, item) => acc + item.price * item.quantity,
+      0,
+    );
+    setSubtotal(subtotal);
   }, [cart]);
+
+  useEffect(() => {
+    const total = subtotal + shippingValue;
+    setTotal(total);
+  }, [subtotal, shippingValue]);
 
   const addItem = (product, quantity) => {
     setCart((currentCart) => {
@@ -28,7 +40,16 @@ export function CartProvider({ children }) {
   };
 
   return (
-    <CartContext.Provider value={{ cart, addItem }}>
+    <CartContext.Provider
+      value={{
+        cart,
+        addItem,
+        setShippingValue,
+        total,
+        subtotal,
+        shippingValue,
+      }}
+    >
       {children}
     </CartContext.Provider>
   );

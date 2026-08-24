@@ -12,7 +12,7 @@ export function ItemCart({ item, isFirstItem }) {
         isFirstItem && 'border-t',
       )}
     >
-      <section className='w-44 h-44 bg-gray-300 rounded-lg overflow-hidden'>
+      <section className='w-40 h-40 md:w-44 md:h-44 bg-gray-300 rounded-lg overflow-hidden'>
         <img
           src={item.image}
           alt={item.title}
@@ -21,22 +21,26 @@ export function ItemCart({ item, isFirstItem }) {
       </section>
 
       <section className='flex flex-col justify-between w-full'>
-        <article className='grid grid-cols-1 md:grid-cols-3 gap-2'>
+        <article className='grid grid-cols-1 lg:grid-cols-3 gap-2'>
           <div className='grid grid-cols-1 gap-2'>
-            <h2 className='text-lg font-semibold font-biorhyme'>
+            <h2 className='text-md lg:text-lg font-semibold font-biorhyme'>
               {item.title}
             </h2>
             <p className='text-gray-500'>${item.price}</p>
           </div>
 
-          <div className='flex md:flex-col gap-2 items-center'>
+          <div className='flex lg:flex-col gap-2 items-center'>
             <p>Cantidades: </p>
-            <p className='font-bold text-lg'>{item.quantity}</p>
+            <p className='font-regular lg:font-semibold text-lg'>
+              {item.quantity}
+            </p>
           </div>
 
-          <div className='flex md:flex-col gap-2 items-end'>
+          <div className='flex lg:flex-col gap-2 items-end'>
             <p>Subtotal:</p>
-            <p className='font-bold text-lg'>${item.quantity * item.price}</p>
+            <p className='font-regular lg:font-semibold text-lg'>
+              ${item.quantity * item.price}
+            </p>
           </div>
         </article>
 
