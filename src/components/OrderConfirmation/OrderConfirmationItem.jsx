@@ -9,7 +9,6 @@ export function OrderConfirmationItem({ item, isLastItem }) {
         isLastItem ? '' : 'border-b border-gray-200 p-4',
       )}
     >
-      {isLastItem && 'ultimo'}
       <section className='w-40 h-40 md:w-44 md:h-44 bg-gray-300 rounded-lg overflow-hidden'>
         <img
           src={item.image}

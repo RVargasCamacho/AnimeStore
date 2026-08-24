@@ -9,10 +9,12 @@ import {
 } from 'firebase/firestore';
 import { db } from '../firebase/config';
 
+const COLLECTION_NAME = 'products';
+
 // Obtener todos los productos de la base de datos de Firebase
 export const getProducts = async () => {
   // accedemos a la colección de productos
-  const productCollection = collection(db, 'productos');
+  const productCollection = collection(db, COLLECTION_NAME);
   // obtenemos todos los documentos de la colección
   const querySnapshot = await getDocs(productCollection);
 
@@ -24,7 +26,7 @@ export const getProducts = async () => {
 };
 
 export const getProductsByCategory = async (category) => {
-  const productCollection = collection(db, 'productos');
+  const productCollection = collection(db, COLLECTION_NAME);
 
   const categoryQuery = query(
     productCollection,
@@ -40,7 +42,7 @@ export const getProductsByCategory = async (category) => {
 };
 
 export const getProductById = async (productId) => {
-  const productRef = doc(db, 'productos', productId);
+  const productRef = doc(db, COLLECTION_NAME, productId);
 
   const productSnapshot = await getDoc(productRef);
 
@@ -57,7 +59,7 @@ export const getProductById = async (productId) => {
 export const checkProductsStock = async (items) => {
   await Promise.all(
     items.map(async (item) => {
-      const productRef = doc(db, 'productos', item.id);
+      const productRef = doc(db, COLLECTION_NAME, item.id);
       const productSnapshot = await getDoc(productRef);
 
       if (!productSnapshot.exists()) {
@@ -74,7 +76,7 @@ export const checkProductsStock = async (items) => {
 };
 
 export const updateProductStock = async (productId, quantity) => {
-  const productRef = doc(db, 'productos', productId);
+  const productRef = doc(db, COLLECTION_NAME, productId);
 
   const productSnapshot = await getDoc(productRef);
 

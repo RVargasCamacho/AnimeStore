@@ -18,6 +18,8 @@ export function Home() {
     setError(null);
     try {
       const data = await getProducts();
+      console.log(data);
+      
       setProducts(data);
     } catch (error) {
       console.error(error);
