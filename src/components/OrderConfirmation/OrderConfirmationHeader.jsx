@@ -23,9 +23,9 @@ const getDateAndTime = (date) => {
 export function OrderConfirmationHeader({orderId, orderDate, orderTotal}) {
   return (
     <section className='w-full flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4'>
-      <OrderHeaderItem title="ID del pedido" value={orderId} />
-      <OrderHeaderItem title="Fecha" value={getDateAndTime(orderDate)} />
-      <OrderHeaderItem title="Total" value={`$ ${orderTotal}`} />
+      <OrderHeaderItem title='ID del pedido' value={orderId} />
+      <OrderHeaderItem title='Fecha' value={getDateAndTime(orderDate)} />
+      <OrderHeaderItem title='Total' value={orderTotal} />
     </section>
-  )
+  );
 }

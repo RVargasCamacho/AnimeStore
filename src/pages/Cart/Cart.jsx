@@ -13,8 +13,5 @@ export function Cart() {
       </div>
     );
   }
-
-  const total = cart.reduce((acc, item) => acc + item.price * item.quantity, 0);
-
   return <ItemsCartContainer cart={cart} />;
 }

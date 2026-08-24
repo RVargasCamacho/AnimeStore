@@ -3,6 +3,7 @@ import { Button } from '../Button/Button';
 import { TitleSection } from '../TitleSection/TitleSection';
 import { ItemCartList } from './ItemCartList';
 import { useCart } from '../../context/CartContext';
+import { formatPrice } from '../../utils/formatPrice';
 
 export function ItemsCartContainer({ cart }) {
   const navigate = useNavigate();
@@ -23,7 +24,9 @@ export function ItemsCartContainer({ cart }) {
         <div className='w-full flex flex-col gap-4'>
           <section className='w-full bg-indigo-50 p-4 rounded-xl flex justify-between items-center text-xl'>
             <span>Subtotal: </span>
-            <span className='font-bold font-biorhyme'>${subtotal}</span>
+            <span className='font-bold font-biorhyme'>
+              {formatPrice(subtotal)}
+            </span>
           </section>
 
           <Button

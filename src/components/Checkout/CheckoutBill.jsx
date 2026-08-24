@@ -1,4 +1,5 @@
 import { useCart } from '../../context/CartContext';
+import { formatPrice } from '../../utils/formatPrice';
 
 export function CheckoutBill({ children }) {
   const { total, shippingValue, subtotal, cart } = useCart();
@@ -8,19 +9,19 @@ export function CheckoutBill({ children }) {
       <article className='w-full flex flex-col gap-3'>
         <div className='font-medium text-lg w-full flex justify-between'>
           <span>Subtotal</span>
-          <span>${subtotal}</span>
+          <span>{formatPrice(subtotal)}</span>
         </div>
 
         <div className='font-medium text-lg w-full flex justify-between'>
           <span>Envío</span>
-          <span>${shippingValue}</span>
+          <span>{formatPrice(shippingValue)}</span>
         </div>
       </article>
 
       <div className='w-full h-px bg-gray-200'></div>
       <article className='font-medium text-lg w-full flex justify-between'>
         <span>Total</span>
-        <span>${total}</span>
+        <span>{formatPrice(total)}</span>
       </article>
 
       <div className='w-full flex flex-col gap-4'>{children}</div>

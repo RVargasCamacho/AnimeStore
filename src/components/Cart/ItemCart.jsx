@@ -1,6 +1,7 @@
 import clsx from 'clsx';
 import { Check, X } from 'lucide-react';
 import React, { useState } from 'react'
+import { formatPrice } from '../../utils/formatPrice';
 
 export function ItemCart({ item, isFirstItem }) {
   const [hasStock, setHasStock] = useState(item.stock > 0);
@@ -26,7 +27,7 @@ export function ItemCart({ item, isFirstItem }) {
             <h2 className='text-md lg:text-lg font-semibold font-biorhyme'>
               {item.title}
             </h2>
-            <p className='text-gray-500'>${item.price}</p>
+            <p className='text-gray-500'>{formatPrice(item.price)}</p>
           </div>
 
           <div className='flex lg:flex-col gap-2 items-center'>
@@ -39,7 +40,7 @@ export function ItemCart({ item, isFirstItem }) {
           <div className='flex lg:flex-col gap-2 items-end'>
             <p>Subtotal:</p>
             <p className='font-regular lg:font-semibold text-lg'>
-              ${item.quantity * item.price}
+              {formatPrice(item.quantity * item.price)}
             </p>
           </div>
         </article>

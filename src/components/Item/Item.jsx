@@ -1,5 +1,6 @@
 import clsx from 'clsx';
 import { Link } from 'react-router-dom';
+import { formatPrice } from '../../utils/formatPrice';
 
 export function Item({ product }) {
   return (
@@ -25,7 +26,7 @@ export function Item({ product }) {
         <div className='px-4'>
           <h2 className='text-lg font-semibold'>{product.title}</h2>
 
-          <p className='text-gray-600'>${product.price}</p>
+          <p className='text-gray-600'>{formatPrice(product.price)}</p>
         </div>
       </article>
     </Link>
