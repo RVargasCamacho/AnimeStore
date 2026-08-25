@@ -14,7 +14,7 @@ export function OrderConfirmationContainer({ order }) {
           orderId={order.id}
           orderTotal={formatPrice(order.total)}
         />
-        <div className='h-px bg-gray-200' w-full></div>
+        <div className='h-px bg-gray-200 w-full'></div>
         <OrderConfirmationItemList items={order.items} />
       </div>
     </section>

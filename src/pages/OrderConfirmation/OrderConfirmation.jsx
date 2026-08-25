@@ -28,7 +28,6 @@ export function OrderConfirmation() {
     try {
       const data = await getOrderByID(id);
       setOrder(data);
-      console.log(data);
     } catch (error) {
       console.error(error);
       setError(error);
