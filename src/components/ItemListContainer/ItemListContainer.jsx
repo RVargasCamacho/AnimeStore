@@ -1,6 +1,6 @@
 import { EmptyState } from '../Emptystate/EmptyState';
 import { ErrorMessage } from '../ErrorMessage/ErrorMessage';
-import { ItemList } from '../ItemList/ItemList';
+import { ItemList } from './ItemList';
 import { Loader } from '../Loader/Loader';
 import { TitleSection } from '../TitleSection/TitleSection';
 

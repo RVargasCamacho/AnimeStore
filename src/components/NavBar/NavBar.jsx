@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { Menu, ShoppingCart, X } from 'lucide-react';
 import { DesktopNav } from './DesktopNav';
 import { MobileNav } from './MobileNav';
-import { CartWidget } from '../CartWidget/CartWidget';
+import { CartWidget } from './CartWidget';
 
 export function NavBar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);

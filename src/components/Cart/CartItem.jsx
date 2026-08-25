@@ -3,7 +3,7 @@ import { Check, X } from 'lucide-react';
 import React, { useState } from 'react'
 import { formatPrice } from '../../utils/formatPrice';
 
-export function ItemCart({ item, isFirstItem }) {
+export function CartItem({ item, isFirstItem }) {
   const [hasStock, setHasStock] = useState(item.stock > 0);
 
   return (

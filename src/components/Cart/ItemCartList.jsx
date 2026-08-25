@@ -1,11 +1,11 @@
 import React from 'react'
-import { ItemCart } from './ItemCart';
+import { CartItem } from './CartItem';
 
-export function ItemCartList({cart}) {
+export function ItemCartList({ cart }) {
   return (
     <div className='flex flex-col'>
       {cart.map((item, index) => (
-        <ItemCart key={item.id} item={item} isFirstItem={index === 0} />
+        <CartItem key={item.id} item={item} isFirstItem={index === 0} />
       ))}
     </div>
   );
