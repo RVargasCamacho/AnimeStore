@@ -23,11 +23,7 @@ export function CartProvider({ children }) {
 
   const addItem = (product, quantity) => {
     setCart((currentCart) => {
-      const existingProduct = currentCart.find(
-        (item) => item.id === product.id,
-      );
-
-      if (existingProduct) {
+      if (existingProduct(product)) {
         return currentCart.map((item) =>
           item.id === product.id
             ? { ...item, quantity: item.quantity + quantity }
@@ -37,6 +33,10 @@ export function CartProvider({ children }) {
 
       return [...currentCart, { ...product, quantity }];
     });
+  };
+
+  const existingProduct = (product) => {
+    return cart.find((item) => item.id === product.id);
   };
 
   const cleanCart = () => {
